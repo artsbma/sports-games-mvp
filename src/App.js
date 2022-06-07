@@ -118,22 +118,22 @@ function App() {
     <div className="App">
       {!submitted ? (
         <>
-          <Typography variant="h1">The Real MVP</Typography>
-          <Typography sx={{ pt: 3 }} variant="h5">
+          <Typography sx={{ pt: 1}} variant="h1">The Real MVP</Typography>
+          <Typography sx={{ pt: 2 }} variant="h5">
             Which one of these works is the "most valuable player" of this
             exhibition?
           </Typography>
           <Typography sx={{ pt: 1 }} variant="subtitle2">
             One pick. No regrets.
           </Typography>
-          <PageGrid sx={{ pl: 2, pt: 5 }} container spacing={3} columns={12}>
+          <PageGrid sx={{ pl: 2, pt: 3 }} container spacing={3} columns={12}>
             {votes.map((item) => {
               return (
                 <Grid
                   key={`${item.id}-${item.title}`}
                   item
                   xs={3}
-                  sx={{ mb: 5 }}
+                  sx={{ mb: 3 }}
                 >
                   <MvpCard
                     key={item.id}
