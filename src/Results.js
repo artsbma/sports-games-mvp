@@ -6,10 +6,7 @@ import { Typography } from "@mui/material";
 export default function Results(props) {
   const { done } = props
 
-  const handleStartOver = (props) => {
-    console.log("in handle start over")
-    props.done
-  }
+
   return (
     <>
     <Typography sx={{mb: 10}} variant='h1'>Results</Typography>
