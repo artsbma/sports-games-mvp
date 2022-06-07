@@ -126,7 +126,7 @@ function App() {
           <Typography sx={{ pt: 1 }} variant="subtitle2">
             One pick. No regrets.
           </Typography>
-          <PageGrid sx={{ ml: 3, pt: 5 }} container spacing={1} columns={12}>
+          <PageGrid sx={{ pl: 3, pt: 5 }} container spacing={3} columns={12}>
             {votes.map((item) => {
               return (
                 <Grid
@@ -154,7 +154,7 @@ function App() {
             ""
           ) : (
             <Button
-              sx={{ mt: 5 }}
+              sx={{ mt: 3 }}
               style={{
                 backgroundColor: "white",
                 color: "black",

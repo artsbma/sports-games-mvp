@@ -51,7 +51,7 @@ export default function MvpCard(props) {
           alt={props.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="subtitle2" component="div">
+          <Typography style={{ fontSize: '1rem' }} gutterBottom variant="subtitle2" component="div">
             {props.id === props.choice ? `${props.title}` : `${props.title}`}
           </Typography>
         </CardContent>
