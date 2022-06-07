@@ -10,14 +10,14 @@ import './MvpCard.css'
 import zIndex from '@mui/material/styles/zIndex';
 
 const ArtworkCard = styled(Card)({
-  height: "320px",
-  width: "240px",
+  height: "270px",
+  width: "190px",
   textAlign: "center",
 });
 
 
 const ThumbImage = styled(CardMedia)({
-  height: '200px',
+  height: '150px',
   width: 'auto',
   marginTop: '20px',
   marginLeft: 'auto',
@@ -26,8 +26,8 @@ const ThumbImage = styled(CardMedia)({
 
 const CheckBox = styled(CheckBoxTwoToneIcon)({
   position: "absolute",
-  paddingTop: "280px",
-  paddingLeft: "80px",
+  paddingTop: "230px",
+  paddingLeft: "60px",
   fontSize: "2em",
   zIndex: "99"
 })
@@ -54,8 +54,8 @@ export default function MvpCard(props) {
       />
       <CardContent>
       
-        <Typography gutterBottom variant="h5" component="div">
-        {props.id === props.choice ? '' : `${props.title}` }
+        <Typography gutterBottom variant="subtitle2" component="div">
+        {props.id === props.choice ? `${props.title}` : `${props.title}` }
         </Typography>
       </CardContent>
     </CardActionArea>

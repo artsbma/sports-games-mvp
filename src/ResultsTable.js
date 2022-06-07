@@ -6,6 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -26,8 +28,9 @@ export default function ResultsTable(props) {
       <Table sx={{ minWidth:250 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Player</TableCell>
-            <TableCell align="right">Votes</TableCell>
+          <TableCell><Typography style={{paddingLeft:20}}variant='h5'>Player</Typography></TableCell>
+            <TableCell></TableCell>
+            <TableCell align="right"><Typography variant='h5'>Votes</Typography></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,11 +41,12 @@ export default function ResultsTable(props) {
               key={row.title}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              
-              <TableCell component="th" scope="row">
-                {row.title}
+              <TableCell  style={{ width:'50px', paddingLeft:30, paddingTop:12, paddingBottom:12 }}><Avatar sx={{width: 50, height: 50}} alt="some alt text" src={`/static/images/${row.img}`} />
               </TableCell>
-              <TableCell align="right">{row.votes}</TableCell>
+              <TableCell component="th" scope="row">
+                <Typography style={{ fontWeight:200, textAlign: 'center' }}variant='h6'>{row.title}</Typography>
+              </TableCell>
+              <TableCell align="right"><Typography variant='h6'>{row.votes}</Typography></TableCell>
               {/* <TableCell align="right">{row.fat}</TableCell> */}
             </TableRow>
           ))}

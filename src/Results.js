@@ -13,8 +13,8 @@ export default function Results(props) {
     <>
     <h1>Results</h1>
     <ResultsTable works={props.works}/>
-    <Button onClick={done} variant="contained" size="large">Start Over!</Button>
-    <button onClick={handleStartOver}>Start Over</button>
+    <Button style={{backgroundColor: 'white', color: 'black', fontSize: '1.5em'}} sx={{mt:3}}onClick={done} variant="contained" size="large">Start Over!</Button>
+    {/* <button onClick={handleStartOver}>Start Over</button> */}
     </>
   )
 }
