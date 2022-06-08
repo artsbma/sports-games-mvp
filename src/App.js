@@ -84,8 +84,10 @@ function App() {
 
   // user submit vote
   const handleSubmit = async () => {
-    // let votes = choice.votes
-    //db from config, collection name, id
+    gtag('event', 'vote_submitted', {
+      'event_label': 'Vote Button',
+      'event_category': 'item_interaction',
+    });
     const votesDoc = doc(db, "votes", choice.id);
     const newVote = { votes: choice.votes + 1 };
     await updateDoc(votesDoc, newVote);
