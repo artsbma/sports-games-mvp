@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase-config";
 import { useIdleTimer } from "react-idle-timer";
+import gtag from 'ga-gtag';
 
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/system";
@@ -70,8 +71,12 @@ function App() {
 
   // user selection from tapping or clicking card
   const saveSelection = (id, vote) => {
-    // console.log("in selection")
+    gtag('event', 'mvp_selected', {
+      'event_label': 'MVP selected from list',
+      'event_category': 'item_interaction',
+    });
     setChoice({ id: id, votes: vote });
+
   };
 
   // user submit vote
