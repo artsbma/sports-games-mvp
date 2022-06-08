@@ -43,7 +43,7 @@ export default function MvpCard(props) {
       className={props.id === props.choice ? "userSelected" : ""}
     >
       {props.id === props.choice ? <CheckBox /> : ""}
-      <CardActionArea onClick={handleSelection}>
+      <CardActionArea style={{ height: '100%' }}onClick={handleSelection}>
         <ThumbImage
           component="img"
           height="140"

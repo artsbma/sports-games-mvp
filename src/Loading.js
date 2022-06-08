@@ -18,10 +18,10 @@ export default function Loading() {
             <Typography sx={{ pt: 1 }} variant="subtitle2">
               One pick. No regrets.
             </Typography>
-    <Grid container wrap="wrap" spacing={2} columns={12} sx={{ pl: 1, pt: 10 }} style={{ padding: "32px 0 0 17px", margin: 0}}>
+    <Grid container wrap="wrap" spacing={2} columns={12} sx={{ pl: 1, pt: 10 }} style={{ padding: "35px 0 0 22px", margin: 0}}>
       {Array.from(new Array(12)).map((item, index) => (
-         <Grid key={`grid-item-${index}`} item xs={3} sx={{ mb: 3 }}>
-         <Card key={`card-${index}`} style={{ height: 273, width: 188, paddingTop: 20, boxSizing: "border-box" }}>    
+         <Grid key={`grid-item-${index}`} item xs={3} style={{ marginBottom: 34}}>
+         <Card key={`card-${index}`} style={{ height: 267, width: 188, paddingTop: 28, boxSizing: "border-box" }}>    
          <Skeleton
            style={{ marginBottom: 10, margin:"0 auto"}}
            variant="rectangular"

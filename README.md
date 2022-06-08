@@ -1,13 +1,14 @@
 # The Real MVP
 
 ## About The Project
-
+Developed to allow visitors to vote on their favorite artwork in the exhibition Ways of Seeing: Sports and Games. Specifically formatted for iPad Pro second generation at 1024 x 1366
 ### Built With
 
 * [React.js](https://reactjs.org/)
 * [Material UI](https://mui.com/)
 * [Firebase](https://firebase.google.com/)
 * [React Idle Timer](https://idletimer.dev/)
+* [ga-gtag](https://www.npmjs.com/package/ga-gtag)
 
 ## Getting Started // Installation
 

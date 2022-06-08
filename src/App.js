@@ -151,7 +151,7 @@ function App() {
             <Typography sx={{ pt: 1 }} variant="subtitle2">
               One pick. No regrets.
             </Typography>
-            <PageGrid sx={{ pl: 1, pt: 3 }} container spacing={3} columns={12}>
+            <PageGrid sx={{ pl: 2, pt: 3 }} container spacing={3} columns={12}>
               {votes.map((item) => {
                 return (
                   <Grid
