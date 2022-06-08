@@ -9,7 +9,8 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase-config";
 import { useIdleTimer } from "react-idle-timer";
-import gtag from 'ga-gtag';
+import gtag, { install } from 'ga-gtag';
+
 
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/system";
@@ -28,6 +29,8 @@ const PageGrid = styled(Grid)({
   borderRadius: 0,
   margin: 0,
 });
+
+install('G-KX1EYTS5LH'); 
 
 function App() {
   // newName and newVote for creating records
