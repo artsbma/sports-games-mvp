@@ -17,7 +17,7 @@ import Results from "./Results";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import "./App.css";
-import Loading from "./Loading"
+import Loading from "./Loading";
 
 const PageGrid = styled(Grid)({
   color: "darkslategray",
@@ -38,7 +38,7 @@ function App() {
   const [choice, setChoice] = useState([]);
   const [hasVoted, setHasVoted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const votesCollectionRef = collection(db, "votes");
 
@@ -107,25 +107,33 @@ function App() {
 
   // get from database
   const getVotes = async () => {
-    const data = await getDocs(votesCollectionRef);
-    console.log("Firebase fetch");
-    setVotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })), setLoading(false));
+    try {
+      const data = await getDocs(votesCollectionRef);
+      console.log("Firebase fetch");
+      setVotes(
+        data.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
+        setLoading(false)
+      );
+    } catch (err) {
+      console.log(err);
+      alert("Error loading MVPs");
+    }
   };
 
   useEffect(() => {
     getVotes();
   }, []);
 
-
-  if(loading === true) {
-    return <Loading />
+  if (loading === true) {
+    return <Loading />;
   } else {
     return (
-    
       <div className="App">
         {!submitted ? (
           <>
-            <Typography sx={{ pt: 1}} variant="h1">The Real MVP</Typography>
+            <Typography sx={{ pt: 1 }} variant="h1">
+              The Real MVP
+            </Typography>
             <Typography sx={{ pt: 2 }} variant="h5">
               Which one of these works is the "most valuable player" of this
               exhibition?
@@ -181,7 +189,6 @@ function App() {
       </div>
     );
   }
-  
 }
 
 export default App;
