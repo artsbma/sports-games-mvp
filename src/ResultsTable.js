@@ -32,7 +32,7 @@ export default function ResultsTable(props) {
           <TableRow>
             <TableCell>
               <Typography style={{ paddingLeft: 20 }} variant="h5">
-                Player
+              Leaderboard
               </Typography>
             </TableCell>
             <TableCell></TableCell>

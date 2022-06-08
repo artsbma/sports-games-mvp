@@ -17,6 +17,7 @@ import Results from "./Results";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import "./App.css";
+import Loading from "./Loading"
 
 const PageGrid = styled(Grid)({
   color: "darkslategray",
@@ -37,6 +38,7 @@ function App() {
   const [choice, setChoice] = useState([]);
   const [hasVoted, setHasVoted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(true)
 
   const votesCollectionRef = collection(db, "votes");
 
@@ -107,72 +109,79 @@ function App() {
   const getVotes = async () => {
     const data = await getDocs(votesCollectionRef);
     console.log("Firebase fetch");
-    setVotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    setVotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })), setLoading(false));
   };
 
   useEffect(() => {
     getVotes();
   }, []);
 
-  return (
-    <div className="App">
-      {!submitted ? (
-        <>
-          <Typography sx={{ pt: 1}} variant="h1">The Real MVP</Typography>
-          <Typography sx={{ pt: 2 }} variant="h5">
-            Which one of these works is the "most valuable player" of this
-            exhibition?
-          </Typography>
-          <Typography sx={{ pt: 1 }} variant="subtitle2">
-            One pick. No regrets.
-          </Typography>
-          <PageGrid sx={{ pl: 2, pt: 3 }} container spacing={3} columns={12}>
-            {votes.map((item) => {
-              return (
-                <Grid
-                  key={`${item.id}-${item.title}`}
-                  item
-                  xs={3}
-                  sx={{ mb: 3 }}
-                >
-                  <MvpCard
-                    key={item.id}
-                    choice={choice.id}
-                    id={item.id}
-                    title={item.title}
-                    img={item.img}
-                    select={() => saveSelection(item.id, item.votes)}
-                  />
-                  {/* <p>{item.votes}</p> */}
-                  {/* <button onClick={() => voteNow(item.id, item.votes)}>Vote</button> */}
-                  {/* <button onClick={() => {deleteWork(item.id)}}>Delete Work</button> */}
-                </Grid>
-              );
-            })}
-          </PageGrid>
-          {!choice.id ? (
-            ""
-          ) : (
-            <Button
-              sx={{ mt: 3 }}
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                fontSize: "1.5em",
-              }}
-              onClick={handleSubmit}
-              variant="contained"
-              size="large"
-            >
-              Submit Vote!
-            </Button>
-          )}
-        </>
-      ) : (
-        <Results works={votes} done={startOver} />
-      )}
-    </div>
-  );
+
+  if(loading === true) {
+    return <Loading />
+  } else {
+    return (
+    
+      <div className="App">
+        {!submitted ? (
+          <>
+            <Typography sx={{ pt: 1}} variant="h1">The Real MVP</Typography>
+            <Typography sx={{ pt: 2 }} variant="h5">
+              Which one of these works is the "most valuable player" of this
+              exhibition?
+            </Typography>
+            <Typography sx={{ pt: 1 }} variant="subtitle2">
+              One pick. No regrets.
+            </Typography>
+            <PageGrid sx={{ pl: 1, pt: 3 }} container spacing={3} columns={12}>
+              {votes.map((item) => {
+                return (
+                  <Grid
+                    key={`${item.id}-${item.title}`}
+                    item
+                    xs={3}
+                    sx={{ mb: 3 }}
+                  >
+                    <MvpCard
+                      key={item.id}
+                      choice={choice.id}
+                      id={item.id}
+                      title={item.title}
+                      img={item.img}
+                      select={() => saveSelection(item.id, item.votes)}
+                    />
+                    {/* <p>{item.votes}</p> */}
+                    {/* <button onClick={() => voteNow(item.id, item.votes)}>Vote</button> */}
+                    {/* <button onClick={() => {deleteWork(item.id)}}>Delete Work</button> */}
+                  </Grid>
+                );
+              })}
+            </PageGrid>
+            {!choice.id ? (
+              ""
+            ) : (
+              <Button
+                sx={{ mt: 3 }}
+                style={{
+                  backgroundColor: "white",
+                  color: "black",
+                  fontSize: "1.5em",
+                }}
+                onClick={handleSubmit}
+                variant="contained"
+                size="large"
+              >
+                Submit Vote!
+              </Button>
+            )}
+          </>
+        ) : (
+          <Results works={votes} done={startOver} />
+        )}
+      </div>
+    );
+  }
+  
 }
 
 export default App;
