@@ -10,14 +10,12 @@ import {
 import { db } from "./firebase-config";
 import { useIdleTimer } from "react-idle-timer";
 import gtag, { install } from 'ga-gtag';
-
-
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/system";
 import MvpCard from "./MvpCard";
 import Results from "./Results";
 import Button from "@mui/material/Button";
-import { Typography } from "@mui/material";
+import Header from './Header';
 import "./App.css";
 import Loading from "./Loading";
 
@@ -135,22 +133,18 @@ function App() {
   }, []);
 
   if (loading === true) {
-    return <Loading />;
+    return (
+      <>
+      <Header title="The Real MVP" subtitle={true}/>
+      <Loading />
+      </>
+    )
   } else {
     return (
       <div className="App">
         {!submitted ? (
           <>
-            <Typography sx={{ pt: 1 }} variant="h1">
-              The Real MVP
-            </Typography>
-            <Typography sx={{ pt: 2 }} variant="h5">
-              Which one of these works is the "most valuable player" of this
-              exhibition?
-            </Typography>
-            <Typography sx={{ pt: 1 }} variant="subtitle2">
-              One pick. No regrets.
-            </Typography>
+          <Header title="The Real MVP" subtitle={true}/>
             <PageGrid sx={{ pl: 2, pt: 3 }} container spacing={3} columns={12}>
               {votes.map((item) => {
                 return (
@@ -168,9 +162,6 @@ function App() {
                       img={item.img}
                       select={() => saveSelection(item.id, item.votes)}
                     />
-                    {/* <p>{item.votes}</p> */}
-                    {/* <button onClick={() => voteNow(item.id, item.votes)}>Vote</button> */}
-                    {/* <button onClick={() => {deleteWork(item.id)}}>Delete Work</button> */}
                   </Grid>
                 );
               })}
@@ -202,20 +193,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <input
-        placeholder="name"
-        onChange={(event) => {
-          setNewName(event.target.value);
-        }}
-      />
-      <input
-        type="number"
-        placeholder="vote"
-        onChange={(event) => {
-          setNewVote(event.target.value);
-        }}
-      />
-      <button onClick={createWork}>Add Work</button> */
-}

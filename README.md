@@ -1,7 +1,7 @@
 # The Real MVP
 
 ## About The Project
-Developed to allow visitors to vote on their favorite artwork in the exhibition Ways of Seeing: Sports and Games. Specifically formatted for iPad Pro second generation at 1024 x 1366
+Basic poll application for use in conjunction with the exhibition Ways of Seeing: Sports and Games at the Birmingham Museum of Art. Allows visitors to vote on thier favorite of 12 works featured in the exhibiton. Specifically formatted for iPad Pro second generation at 1024 x 1366, installed as a kiosk as part of the exhibitoin.
 ### Built With
 
 * [React.js](https://reactjs.org/)
